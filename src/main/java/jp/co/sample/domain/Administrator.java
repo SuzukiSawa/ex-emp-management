@@ -5,19 +5,12 @@ public class Administrator {
 	private Integer id;
 	private String name;
 	private String mailAddress;
-	private String passeord;
+	private String password;
 	
 	
-	Administrator() {
+	public Administrator() {
 
 }
-
-
-	@Override
-	public String toString() {
-		return "Administrator [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ", passeord=" + passeord
-				+ "]";
-	}
 
 
 	public Integer getId() {
@@ -50,12 +43,13 @@ public class Administrator {
 	}
 
 
-	public String getPasseord() {
-		return passeord;
+	public String getPassword() {
+		return password;
 	}
 
 
-	public void setPasseord(String passeord) {
-		this.passeord = passeord;
+	public void setPassword(String password) {
+		this.password = password;
 	}
+
 }
