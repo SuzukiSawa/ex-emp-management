@@ -64,9 +64,11 @@ public class AdministratorController {
 			String error="メールアドレスまたはパスワードが不正です。";
 			model.addAttribute("error", error);
 			return "login";
+		}else {
+			
+			session.setAttribute("administratorName",administrator.getName());
 		}
-
-		session.setAttribute("administorName", form);
+		
 		return "forward:/employee/showList";
 	}
 		@RequestMapping("/logout")
@@ -74,7 +76,7 @@ public class AdministratorController {
 			
 		  session.invalidate();
 		
-		  return "rediect:/employee/login";
+		  return "redirect:/";
 
 	}
 }
