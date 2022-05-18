@@ -31,29 +31,28 @@ public class AdministratorRepository {
 	
 	
 
-	public Administrator insert(Administrator administrator) {
+	public void insert(Administrator administrator) {
 		SqlParameterSource param
 		=new BeanPropertySqlParameterSource(administrator);
 
 			String insertSql 
-				= "INSERT INTO administrators(name, mail_address, password) VALUES(:name, :mailAddress, :password)";
+				= "INSERT INTO administrators(name, mail_address, password)VALUES(:name,:mailAddress,:password)";
 
 			template.update(insertSql, param);
 
 	
-		return administrator;
+
 	}
 
 	public Administrator findByMailAndPassword(String mailAddress,String password) {
 		String sql
-			="SELECT id,name,mail_address,password FROM administrator WHERE mailAddress=:mailAddress,password=:password";
+			="SELECT id,name,mail_address,password FROM administrators WHERE mailAddress=:mailAddress,password=:password";
 		
 		SqlParameterSource param
 			=new MapSqlParameterSource().addValue("mailAddress",mailAddress).addValue("password",password);
 
 		
-		List<Administrator>administratorList
-			=template.query(sql, param,ADMINISTRATOR_ROW_MAPPER);
+		List<Administrator>administratorList = template.query(sql, param,ADMINISTRATOR_ROW_MAPPER);
 		if(administratorList.size()==0) {
 
 			return null;
